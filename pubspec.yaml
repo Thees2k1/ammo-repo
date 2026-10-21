@@ -1,6 +1,6 @@
 name: ammo_repo
 description: Monorepo workspace for Ammo Dart and Flutter utility libraries.
-repository: https://github.com/tongnguyen/ammo-repo
+repository: https://github.com/Thees2k1/ammo-repo
 publish_to: none
 
 environment:

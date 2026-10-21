@@ -1,6 +1,8 @@
 name: ammo_dart
 description: Opinionated, modern pure Dart 3+ reusable helpers and utilities.
 version: 0.1.0
+repository: https://github.com/Thees2k1/ammo-repo/tree/main/packages/ammo_dart
+homepage: https://github.com/Thees2k1/ammo-repo
 publish_to: none
 
 environment:

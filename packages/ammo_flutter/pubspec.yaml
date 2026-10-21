@@ -1,6 +1,8 @@
 name: ammo_flutter
 description: Flutter widget helpers and UI extensions built on modern Flutter and ammo_dart.
 version: 0.1.0
+repository: https://github.com/Thees2k1/ammo-repo/tree/main/packages/ammo_flutter
+homepage: https://github.com/Thees2k1/ammo-repo
 publish_to: none
 
 environment:
