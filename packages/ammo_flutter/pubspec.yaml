@@ -1,0 +1,20 @@
+name: ammo_flutter
+description: Flutter widget helpers and UI extensions built on modern Flutter and ammo_dart.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+  flutter: '>=3.47.0'
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ammo_dart:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
