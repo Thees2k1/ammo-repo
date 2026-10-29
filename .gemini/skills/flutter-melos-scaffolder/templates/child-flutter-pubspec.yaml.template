@@ -1,0 +1,20 @@
+name: {{PACKAGE_NAME}}_flutter
+description: Flutter widgets and UI components built on {{PACKAGE_NAME}}_dart.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+  flutter: '>=3.47.0'
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  {{PACKAGE_NAME}}_dart:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0

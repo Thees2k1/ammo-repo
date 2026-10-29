@@ -1,0 +1,94 @@
+name: {{PROJECT_NAME}}_repo
+description: Monorepo workspace for {{PROJECT_NAME}} Dart and Flutter packages.
+publish_to: none
+
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+
+workspace:
+  - packages/**
+  - apps/**
+
+dev_dependencies:
+  melos: ^8.9.0
+  lints: ^5.0.0
+
+melos:
+{{MELOS_SDK_PATH_SNIPPET}}
+  command:
+    version:
+      branch: main
+      releaseUrl: true
+      includeCommitId: true
+      linkToCommits: true
+
+    bootstrap:
+      environment:
+        sdk: '>=3.13.0 <4.0.0'
+        flutter: '>=3.47.0'
+
+  scripts:
+    lint:all:
+      steps:
+        - melos analyze
+        - format-check
+      description: "Run all static analysis and formatting checks."
+
+    analyze:
+      run: dart analyze .
+      description: "Run dart analyze across all workspace packages."
+
+    format:
+      run: dart format .
+      description: "Format all Dart files in the workspace."
+
+    format-check:
+      run: melos exec dart format . --set-exit-if-changed
+      description: "Run dart format checks for all packages."
+
+    test:all:
+      run: melos test --no-pub
+      description: "Run tests across all packages using appropriate runner (dart test / flutter test)."
+
+    test:dart:
+      description: "Run unit tests in pure Dart packages."
+      exec:
+        command: dart test
+        concurrency: 1
+      packageFilters:
+        flutter: false
+        dirExists: test
+
+    test:flutter:
+      description: "Run tests in Flutter packages."
+      exec:
+        command: flutter test
+        concurrency: 1
+      packageFilters:
+        flutter: true
+        dirExists: test
+
+    test:select:
+      run: melos exec -c 1 -- flutter test
+      packageFilters:
+        dirExists: test
+      description: "Run flutter test for selected packages."
+
+    coverage:
+      steps:
+        - melos exec -- flutter test --coverage
+      packageFilters:
+        dirExists: test
+      description: "Generate test coverage for packages."
+
+    upgrade:
+      run: melos exec flutter pub upgrade
+      description: "Run flutter pub upgrade across packages."
+
+    build_runner:
+      description: "Execute build_runner code generation in packages that depend on it."
+      exec:
+        command: dart run build_runner build --delete-conflicting-outputs
+        concurrency: 1
+      packageFilters:
+        dependsOn: build_runner

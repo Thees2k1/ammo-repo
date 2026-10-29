@@ -1,0 +1,20 @@
+# Dart & Pub
+.dart_tool/
+.packages
+build/
+pubspec.lock
+
+# FVM
+.fvm/*
+!.fvm/fvm_config.json
+!.fvm/versions/
+
+# IDE & Editor
+.idea/
+.vscode/*
+!.vscode/settings.json
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
